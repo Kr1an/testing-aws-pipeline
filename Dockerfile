@@ -1,9 +1,7 @@
-FROM ubuntu
+FROM busybox
 
-RUN apt-get update
-RUN apt-get -y install python
-RUN apt-get clean
+RUN echo "Hello, World" > /index.html
 
 EXPOSE 8000
 
-CMD [ "python", "-m", "SimpleHTTPServer" ]
+CMD httpd -p 8000 -h /; tail -f /dev/null
